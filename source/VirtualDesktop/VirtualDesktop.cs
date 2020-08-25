@@ -21,6 +21,19 @@ namespace WindowsDesktop
 		/// </summary>
 		public Guid Id { get; }
 
+		/// <summary>
+		/// Gets the index for the virtual desktop.
+		/// </summary>
+		public int Index
+		{
+			get
+			{
+				var desktops = GetDesktops();
+				var index = Array.IndexOf(desktops, this) + 1;
+				return index;
+			}
+		}
+
 		[UsedImplicitly]
 		internal VirtualDesktop(ComInterfaceAssembly assembly, Guid id, object comObject)
 			: base(assembly, comObject)
